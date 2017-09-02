@@ -1,0 +1,5 @@
+com\gvr\api\model\GvrServiceCallReport.class
+com\gvr\api\service\GvrServiceImpl.class
+com\gvr\api\DemoApplication.class
+com\gvr\api\controller\RootController.class
+com\gvr\api\service\GvrService.class
