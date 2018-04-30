@@ -27,20 +27,20 @@ echo $REVISION
 
  if [ "$SERVICES" == "" ]; then
    echo "entered existing service"
-   DESIRED_COUNT=`aws ecs describe-services --services test-service --cluster test-cluster --region us-east-2 | jq .services[].desiredCount`
+   DESIRED_COUNT=`aws ecs describe-services --services gvrService --cluster gvrCluster --region us-east-2 | jq .services[].desiredCount`
    echo $DESIRED_COUNT;
    if [ ${DESIRED_COUNT} = "0" ]; then
      DESIRED_COUNT="1"
    else
      DESIRED_COUNT="0"
-   aws ecs update-service --cluster test-cluster --region us-east-2 --service test-service --task-definition ${family}:${REVISION} --desired-count ${DESIRED_COUNT}
+   aws ecs update-service --cluster gvrCluster --region us-east-2 --service gvrService --task-definition ${family}:${REVISION} --desired-count ${DESIRED_COUNT}
     DESIRED_COUNT="1"
    fi
    sleep 20
-   aws ecs update-service --cluster test-cluster --region us-east-2 --service test-service --task-definition ${family}:${REVISION} --desired-count ${DESIRED_COUNT}
+   aws ecs update-service --cluster gvrCluster --region us-east-2 --service gvrService --task-definition ${family}:${REVISION} --desired-count ${DESIRED_COUNT}
  else
    echo "entered new service"
-   aws ecs create-service --service-name test-service --desired-count 1 --task-definition ${family} --cluster test-cluster --region us-east-2
+   aws ecs create-service --service-name gvrService --desired-count 1 --task-definition ${family} --cluster gvrCluster --region us-east-2
  fi
  
 }
