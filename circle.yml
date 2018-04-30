@@ -1,0 +1,16 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  post:
+    - mvn install
+    - docker build -t 358841582778.dkr.ecr.us-east-2.amazonaws.com/gvr-repo:$CIRCLE_SHA1 .
+    - docker build -t 358841582778.dkr.ecr.us-east-2.amazonaws.com/gvr-repo:latest .
+    
+
+test:
+  post:
+    - docker run -d -p 8083:8083 --name gvr-repo 358841582778.dkr.ecr.us-east-2.amazonaws.com/gvr-repo:$CIRCLE_SHA1; sleep 10
+    - chmod +x ./deploy.sh
+    - ./deploy.sh
