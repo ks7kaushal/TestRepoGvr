@@ -1,9 +1,0 @@
-spring:
-  profiles.active: dev
-server.port: 1210
-artifact:
-  id : DemoGVR
-  version: 0.0.1-SNAPSHOT
-environment:
-  nodeName :
-  
