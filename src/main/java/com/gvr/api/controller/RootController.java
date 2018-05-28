@@ -35,7 +35,7 @@ public class RootController {
 	 * 
 	 * @return String
 	 */
-	@RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
+	@RequestMapping(value = "/echo/{str}", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
 	public String echo(@PathVariable String str) {
 		return str;
 	}
