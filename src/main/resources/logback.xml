@@ -16,7 +16,7 @@ TRACE -	Designates finer-grained informational events than the DEBUG.
 
 	<!-- Rolling file appender: keeps archiving the log files everyday -->
 	<appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/${APP_NAME}.log</file>
+		<file>/home/logs/${APP_NAME}.log</file>
 		<append>true</append>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 		
